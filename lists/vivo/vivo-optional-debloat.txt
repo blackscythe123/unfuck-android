@@ -1,0 +1,24 @@
+# ==============================================================================
+# CleanYourPhone - vivo / iQOO Optional Debloat List
+# Optional removals if you have alternative apps installed.
+# ==============================================================================
+
+# vivo Weather (Contains regional ads; replace with Breezy Weather)
+com.vivo.weather
+com.vivo.weather.provider
+
+# vivo Sound Recorder
+com.vivo.soundrecorder
+
+# vivo Compass
+com.vivo.compass
+
+# vivo Calculator
+com.vivo.calculator
+
+# Game Cube / Ultra Game Mode overlay (disable if you don't play mobile games)
+com.vivo.gamecube
+
+# iManager (vivo Phone Manager / cleaner; contains Tencent security engine)
+# NOTE: In Android 14 Funtouch OS, disabling iManager may be restricted by the system.
+com.vivo.imanager

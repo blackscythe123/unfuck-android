@@ -1,0 +1,19 @@
+# One UI (Samsung Galaxy) Safe Debloat List
+# Compatible with One UI 4, 5, 6, 7 (Android 12 - 15)
+
+# Samsung Minus-One Screen & Ad Portals
+com.samsung.android.app.spage
+com.sec.android.app.sbrowser
+com.samsung.android.game.gamehome
+com.samsung.android.game.gametools
+
+# Samsung Auxiliary Services & Push Telemetry
+com.samsung.android.service.peoplestripe
+com.samsung.android.aremoji
+com.samsung.android.bixby.agent
+com.samsung.android.bixby.wakeup
+com.samsung.android.app.tips
+com.samsung.android.kidsinstaller
+com.samsung.android.app.dressroom
+com.samsung.android.ipsgeofence
+com.samsung.android.mcfds

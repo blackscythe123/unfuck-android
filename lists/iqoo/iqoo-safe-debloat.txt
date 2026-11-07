@@ -1,0 +1,64 @@
+# ==============================================================================
+# CleanYourPhone - iQOO (Funtouch OS / OriginOS) Safe Debloat List
+# Verified against UAD-ng and MuntashirAkon debloat lists.
+# Safe to disable/uninstall for user 0 without bricking your device.
+# ==============================================================================
+
+# --- BRAND APP STORES & THEME STORES ---
+# V-Appstore (iQOO / vivo App Store)
+com.vivo.appstore
+# i Theme Store
+com.bbk.theme
+com.bbk.theme.resources
+com.vivo.theme
+
+# --- LOCK SCREEN MAGAZINES & GLOBAL SEARCH ---
+# Lockscreen Poster & Glance
+com.vivo.magazine
+com.glance.internet
+# Global Search
+com.vivo.globalsearch
+
+# --- BRAND CLOUD APPS & ACCOUNTS ---
+# vivo / iQOO Cloud & Account
+com.bbk.cloud
+com.bbk.account
+# Push Service
+com.vivo.pushservice
+
+# --- GAME CENTERS & MONETIZATION ---
+# vivo / iQOO Game Center
+com.vivo.game
+com.vivo.gamewatch
+com.vivo.space
+com.vivo.website
+
+# --- JOVI & AI ASSISTANTS ---
+# Jovi Voice / Assistant
+com.vivo.assistant
+com.bbk.appassistant
+com.vivo.hiboard
+com.vivo.cota
+
+# --- WALLET & FINANCIAL SERVICES ---
+com.vivo.wallet
+com.vivo.unionpay
+com.redteamobile.roaming
+
+# --- TELEMETRY, LOGGING & ENGINEERING ---
+# iQOO / vivo Log System & Daemons
+com.bbk.iqoo.logsystem
+com.vivo.daemonService
+com.vivo.agent
+com.vivo.customtool
+com.vivo.mot
+com.iqoo.engineermode
+
+# --- DUPLICATE MUSIC, VIDEO & BROWSER ---
+# vivo Browser
+com.vivo.browser
+# Video Editor / Player
+com.vivo.videoeditor
+com.vivo.vtouch
+# EasyShare
+com.vivo.easyshare

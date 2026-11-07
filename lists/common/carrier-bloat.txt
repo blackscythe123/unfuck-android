@@ -1,0 +1,25 @@
+# ==============================================================================
+# CleanYourPhone - Carrier Preinstalled Bloat
+# Applications installed by telecommunication carriers (AT&T, Verizon, T-Mobile, Jio, Airtel).
+# Safe to disable/uninstall for user 0 without affecting network signal or calls.
+# ==============================================================================
+
+# Indian Carriers (Jio / Airtel)
+com.jio.myjio
+com.jio.media.ondemand
+com.myairtelapp
+com.airtel.podcasts
+
+# US Carriers - AT&T
+com.att.dh
+com.att.myWireless
+com.asurion.android.mobilerecovery.att
+
+# US Carriers - Verizon
+com.vzw.hss.myverizon
+com.verizon.mips.services
+com.vzw.apnlib
+
+# US Carriers - T-Mobile
+com.tmobile.pr.mytmobile
+com.tmobile.echolocate

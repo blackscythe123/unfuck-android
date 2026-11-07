@@ -1,0 +1,99 @@
+# ==============================================================================
+# CleanYourPhone - Realme (Realme UI) Safe Debloat List
+# Verified against UAD-ng and MuntashirAkon debloat lists.
+# Safe to disable/uninstall for user 0 without bootloops.
+# ==============================================================================
+
+# --- BRAND APP STORES & THEME STORES ---
+# Realme / HeyTap App Market
+com.heytap.market
+com.oppo.market
+# Theme Stores
+com.heytap.themestore
+com.nearme.themestore
+com.oplus.themestore
+
+# --- LOCK SCREEN MAGAZINES & GLOBAL SEARCH ---
+# Lock Screen Magazine (Glance / Pictorial wallpapers with ads)
+com.heytap.pictorial
+com.oplus.pictorial
+com.glance.internet
+# Global Search / Realme Search
+com.heytap.quicksearchbox
+com.oppo.quicksearchbox
+com.coloros.quicksearchbox
+com.oplus.quicksearchbox
+
+# --- REALME COMMUNITY & ACCOUNTS ---
+# Realme Community app
+com.realme.community
+# HeyTap Cloud & Account
+com.heytap.cloud
+com.heytap.usercenter
+com.oplus.usercenter
+# HeyTap Push / Ad notifications
+com.heytap.mcs
+# HeyTap OpenID tracking identifier
+com.heytap.openid
+# Location marketing tracker
+com.nearme.atlas
+
+# --- GAME CENTERS & GAME LAUNCHERS ---
+# Realme Game Center / Game Space
+com.nearme.gamecenter
+com.oplus.games
+com.coloros.gamespace
+com.coloros.gamespaceui
+
+# --- VOICE ASSISTANTS & AI SUGGESTIONS ---
+# Breeno / Speech Assist
+com.heytap.speechassist
+com.coloros.speechassist
+# Pantanal smart suggestions
+com.oplus.pantanal.ums
+
+# --- CHINESE-MARKET & FINANCIAL SERVICES ---
+# FinShell Pay / Realme Pay
+com.finshell.wallet
+com.coloros.wallet
+com.heytap.wallet
+com.oplus.pay
+# Roaming
+com.redteamobile.roaming
+com.heytap.roaming
+
+# --- TELEMETRY, LOGGING & DIAGNOSTICS ---
+# LogKit & Telemetry
+com.coloros.logkit
+com.oplus.logkit
+# Crashbox & Postman telemetry
+com.oplus.crashbox
+com.oplus.postmanservice
+# Analytics Tracking Daemon
+com.coloros.atd
+# User behavior habit analyzer
+com.oplus.deepthinker
+# User experience improvement program
+com.oplus.uxdesign
+# NearMe ROM usage statistics
+com.nearme.statistics.rom
+com.oplus.criticallog
+
+# --- ENGINEERING & TEST APPS ---
+com.oplus.engineermode
+com.oplus.engineermode.camera
+com.oplus.factorytest
+com.oplus.sau
+com.oplus.sauhelper
+
+# --- DUPLICATE MUSIC, VIDEO & BROWSER ---
+# Realme / HeyTap Browser
+com.heytap.browser
+com.coloros.browser
+# Video Player
+com.coloros.video
+com.oplus.video
+# Music / Melody
+com.heytap.music
+com.coloros.music
+com.oplus.melody

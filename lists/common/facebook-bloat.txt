@@ -1,0 +1,17 @@
+# ==============================================================================
+# CleanYourPhone - Preinstalled Facebook Bloat & Daemons
+# Rated 100% SAFE to remove in both UAD-ng and MuntashirAkon.
+# These services run in the background, send device telemetry to Meta,
+# and silently install/update sponsored apps.
+# ==============================================================================
+
+# Facebook Main App (if preinstalled)
+com.facebook.katana
+
+# Facebook Background Services & App Installer
+com.facebook.system
+com.facebook.appmanager
+com.facebook.services
+
+# Facebook Messenger (if preinstalled)
+com.facebook.orca

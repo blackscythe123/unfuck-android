@@ -1,0 +1,82 @@
+# ==============================================================================
+# CleanYourPhone - OnePlus (OxygenOS) Safe Debloat List
+# Unified ColorOS/OxygenOS packages verified against UAD-ng and MuntashirAkon.
+# Safe to disable/uninstall for user 0 without bricking or breaking updates.
+# ==============================================================================
+
+# --- ONEPLUS BRAND SERVICES & MEMBERSHIP ---
+# OnePlus Community / Red Cable Club tracking
+net.oneplus.forums
+net.oneplus.membership
+com.oneplus.membership
+# Legacy OxygenOS 5, 9, 10 quick services & cards
+net.oneplus.commonbubble
+com.oneplus.card
+# OnePlus Account / HeyTap Account
+com.heytap.usercenter
+com.oplus.usercenter
+# HeyTap App Market & Theme Store
+com.heytap.market
+com.heytap.themestore
+com.oplus.themestore
+
+# --- LOCK SCREEN MAGAZINES & GLOBAL SEARCH ---
+# Pictorial / Lock screen magazine
+com.heytap.pictorial
+com.oplus.pictorial
+# Glance lock screen ads
+com.glance.internet
+# Global Search / OnePlus Scout
+com.heytap.quicksearchbox
+com.oneplus.sound.quicksearchbox
+com.oplus.quicksearchbox
+
+# --- GAME CENTERS & GAME SERVICES ---
+# Game Space / Games app
+com.oplus.games
+com.coloros.gamespace
+com.coloros.gamespaceui
+
+# --- TELEMETRY, LOGGING & DIAGNOSTICS ---
+# OnePlus LogKit & Telemetry (Sends hardware stats to servers)
+com.oem.oemlogkit
+com.oneplus.diagnostics
+com.oplus.logkit
+# Crashbox & Postman telemetry
+com.oplus.crashbox
+com.oplus.postmanservice
+# Analytics Tracking Daemon
+com.coloros.atd
+# User behavior habit analyzer
+com.oplus.deepthinker
+# User experience program
+com.oplus.uxdesign
+# Feedback app
+com.oplus.criticallog
+
+# --- VOICE ASSISTANT & CHINESE SERVICES ---
+# Breeno / Speech Assist
+com.heytap.speechassist
+com.coloros.speechassist
+# Roaming stubs & Wallet
+com.redteamobile.roaming
+com.finshell.wallet
+com.oplus.pay
+
+# --- DUPLICATE MEDIA & BROWSERS ---
+# Stock Browser
+com.heytap.browser
+com.coloros.browser
+# Stock Video Player
+com.coloros.video
+com.oplus.video
+# Stock Music
+com.heytap.music
+com.oplus.melody
+
+# --- ENGINEERING & TEST ---
+com.oplus.engineermode
+com.oplus.engineermode.camera
+com.oplus.factorytest
+com.oplus.sau
+com.oplus.sauhelper

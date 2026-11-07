@@ -1,0 +1,32 @@
+# ==============================================================================
+# CleanYourPhone - OnePlus (OxygenOS) Optional Debloat List
+# Optional removals if you replace them with open-source alternatives.
+# ==============================================================================
+
+# OnePlus Weather
+net.oneplus.weather
+com.oplus.weather.service
+
+# OnePlus Clone Phone
+com.oneplus.backuprestore
+com.oplus.backuprestore
+
+# OnePlus Notes
+net.oneplus.notes
+
+# Zen Mode / Zen Space
+com.oneplus.brickmode
+com.oplus.zenspace
+
+# Sound Recorder
+com.oneplus.soundrecorder
+com.oplus.soundrecorder
+
+# Calculator
+com.oneplus.calculator
+com.oplus.calculator
+
+# OnePlus Gallery (Remove only if using Google Photos or Fossify Gallery)
+com.oneplus.gallery
+com.coloros.gallery3d
+com.oplus.gallery3d

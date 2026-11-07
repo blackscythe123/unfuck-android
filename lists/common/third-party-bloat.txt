@@ -1,0 +1,31 @@
+# ==============================================================================
+# CleanYourPhone - Third-Party Preinstalled Commercial Bloat
+# Preloaded commercial applications frequently bundled with OEM firmware.
+# Rated 100% SAFE to remove.
+# ==============================================================================
+
+# Netflix Activation Stub & Preloaded App
+com.netflix.mediaclient
+com.netflix.partner.activation
+
+# Amazon Shopping & Amazon App Manager
+com.amazon.mShop.android.shopping
+com.amazon.appmanager
+
+# Spotify Preload Stub
+com.spotify.music
+
+# Booking.com
+com.booking
+
+# Glance In-Screen Ads & Feeds
+com.glance.internet
+
+# Indian Market Preloaded Short Video Bloat (Moj, Josh, ShareChat)
+in.mohalla.video
+in.mohalla.sharechat
+com.eterno.shortvideos
+
+# TikTok / ByteDance Preload Stubs
+com.zhiliaoapp.musically
+com.ss.android.ugc.trill

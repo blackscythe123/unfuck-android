@@ -1,0 +1,23 @@
+# ==============================================================================
+# CleanYourPhone - iQOO Optional Debloat List
+# Optional removals if you have alternative apps installed.
+# ==============================================================================
+
+# Weather
+com.vivo.weather
+com.vivo.weather.provider
+
+# Sound Recorder
+com.vivo.soundrecorder
+
+# Compass
+com.vivo.compass
+
+# Calculator
+com.vivo.calculator
+
+# Game Cube (Ultra Game Mode)
+com.vivo.gamecube
+
+# iManager
+com.vivo.imanager

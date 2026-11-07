@@ -1,0 +1,48 @@
+# ==============================================================================
+# CleanYourPhone - vivo (OriginOS) Safe Debloat List
+# Safe debloat packages specifically present on OriginOS builds.
+# ==============================================================================
+
+# --- APP STORE & THEMES ---
+com.vivo.appstore
+com.bbk.theme
+com.bbk.theme.resources
+com.vivo.theme
+
+# --- LOCKSCREEN & PROMOTIONAL FEEDS ---
+com.vivo.magazine
+com.vivo.globalsearch
+com.vivo.hiboard
+
+# --- JOVI & AI ASSISTANTS ---
+com.vivo.assistant
+com.bbk.appassistant
+com.vivo.cota
+
+# --- CLOUD & PUSH ---
+com.bbk.cloud
+com.bbk.account
+com.vivo.pushservice
+
+# --- GAMES & SHOPPING ---
+com.vivo.game
+com.vivo.gamewatch
+com.vivo.space
+com.vivo.website
+
+# --- WALLET & PAYMENT ---
+com.vivo.wallet
+com.vivo.unionpay
+com.redteamobile.roaming
+
+# --- TELEMETRY & LOGGING ---
+com.vivo.daemonService
+com.vivo.agent
+com.bbk.iqoo.logsystem
+com.vivo.customtool
+com.vivo.mot
+
+# --- DUPLICATE BROWSERS & TOOLS ---
+com.vivo.browser
+com.vivo.videoeditor
+com.vivo.easyshare

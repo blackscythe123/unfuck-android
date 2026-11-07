@@ -1,0 +1,43 @@
+# ==============================================================================
+# CleanYourPhone - Google Telemetry & Safe Preinstalled Google Apps
+# Rated 100% SAFE to remove in UAD-ng and MuntashirAkon.
+# None of these will break Google Play Store or Google Play Services.
+# ==============================================================================
+
+# Google Chrome (Safe to remove if you use Firefox, Brave, or Cromite)
+com.android.chrome
+
+# Google Assistant / Google Search app (Safe if not using "Hey Google")
+# DO NOT remove if you rely on Pixel-like search bar
+# com.google.android.googlequicksearchbox
+
+# YouTube & YouTube Music (Safe to remove if using NewPipe, Grayjay, or Revanced)
+com.google.android.youtube
+com.google.android.apps.youtube.music
+
+# Google TV / Play Movies & TV
+com.google.android.videos
+
+# Google Play Books
+com.google.android.apps.books
+
+# Google Play Games
+com.google.android.play.games
+
+# Google Duo / Meet
+com.google.android.apps.tachyon
+
+# Google News
+com.google.android.apps.magazines
+
+# Google Podcasts (Discontinued)
+com.google.android.apps.podcasts
+
+# Digital Wellbeing (Logs screen-time and app launches constantly)
+com.google.android.apps.wellbeing
+
+# ARCore (Augmented Reality services)
+com.google.ar.core
+
+# Google Feedback / Crash reporter
+com.google.android.feedback

@@ -1,0 +1,28 @@
+# ==============================================================================
+# CleanYourPhone - Realme (Realme UI) Optional Debloat List
+# Optional removals if you use third-party or Fossify replacements.
+# ==============================================================================
+
+# Realme Weather
+com.coloros.weather.service
+com.oplus.weather.service
+
+# Realme Phone Clone
+com.coloros.backuprestore
+com.oplus.backuprestore
+
+# Sound Recorder
+com.coloros.soundrecorder
+com.oplus.soundrecorder
+
+# Compass
+com.coloros.compass
+com.oplus.compass
+
+# Calculator
+com.coloros.calculator
+com.oplus.calculator
+
+# SafeCenter / Phone Manager Cleaner
+com.oplus.safecenter
+com.coloros.safecenter

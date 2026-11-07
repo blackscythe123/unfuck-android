@@ -1,0 +1,51 @@
+# ==============================================================================
+# CleanYourPhone - Oppo (ColorOS) Optional Debloat List
+# These apps are safe to remove IF you have an alternative (e.g. Fossify suite).
+# Do not remove if you rely on stock Oppo utilities.
+# ==============================================================================
+
+# Oppo / ColorOS Weather (Contains ads in some regions; replace with Breezy Weather)
+com.coloros.weather.service
+com.oplus.weather.service
+
+# Oppo Phone Clone (Keep if switching phones frequently)
+com.coloros.backuprestore
+com.oplus.backuprestore
+
+# Oppo Sound Recorder (Can be replaced with Fossify Voice Recorder)
+com.coloros.soundrecorder
+com.oplus.soundrecorder
+
+# Oppo Compass
+com.coloros.compass
+com.oplus.compass
+
+# Oppo Calculator (Can be replaced with Fossify Calculator)
+com.coloros.calculator
+com.oplus.calculator
+
+# Zen Space / Relax app
+com.oplus.zenspace
+com.coloros.focusmode
+
+# SafeCenter / Phone Manager Antivirus scanner (Tencent/Avast engine, redundant cleaner)
+com.oplus.safecenter
+com.coloros.safecenter
+
+
+# --- ADDITIONAL VERIFIED AUXILIARY ENGINES (UNFUCK-ANDROID) ---
+# Google Discover Feed (Minus-One screen with sponsored news & video ads)
+com.google.android.googlequicksearchbox
+# Google Speech Services / Offline Voice Models (~1.01 GB storage reclaim)
+com.google.android.tts
+# NearMe Instant App Platform (In-app micro-app engine)
+com.nearme.instant.platform
+# Android Auto background car projection daemon
+com.google.android.projection.gearhead
+# TalkBack accessibility screen reader
+com.google.android.marvin.talkback
+# Switch Access accessibility motor tool
+com.google.android.accessibility.switchaccess
+# Google ARCore augmented reality engine
+com.google.ar.core
+com.google.ar.lens

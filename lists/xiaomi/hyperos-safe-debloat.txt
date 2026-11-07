@@ -1,0 +1,21 @@
+# HyperOS & MIUI (Xiaomi / Redmi / POCO) Safe Debloat List
+# Compatible with HyperOS 1.0, 2.0 & MIUI 12, 13, 14
+
+# Xiaomi Ads & Storefronts
+com.miui.msa.global
+com.xiaomi.mipicks
+com.mi.globalbrowser
+com.miui.videoplayer
+com.miui.player
+com.miui.yellowpage
+
+# Analytics, Daemon & Telemetry
+com.miui.analytics
+com.miui.daemon
+com.xiaomi.joyose
+com.miui.bugreport
+com.xiaomi.glgm
+
+# Minus-One App Vault & Lockscreen Wallpaper Carousel
+com.mi.android.globalminusscreen
+com.mfashiongallery.emag

@@ -1,0 +1,120 @@
+# ==============================================================================
+# CleanYourPhone - Oppo (ColorOS) Safe Debloat List
+# Verified against Universal Android Debloater (UAD-ng) and MuntashirAkon lists.
+# All packages here are rated 100% SAFE to disable/uninstall for user 0.
+# ==============================================================================
+
+# --- BRAND APP STORES & THEME STORES ---
+# HeyTap App Market (Proprietary ad-heavy store)
+com.heytap.market
+com.oppo.market
+# Theme Stores (In-app purchases, paid themes, and telemetry)
+com.heytap.themestore
+com.nearme.themestore
+com.oplus.themestore
+
+# --- LOCK SCREEN MAGAZINES & GLOBAL SEARCH ---
+# Lock Screen Magazine / Pictorial (Wallpapers with sponsored clickbait & ads)
+com.heytap.pictorial
+com.coloros.pictorial
+com.oplus.pictorial
+# Glance Lock Screen ads
+com.glance.internet
+# Global Search / Swipe-down search bar
+com.heytap.quicksearchbox
+com.oppo.quicksearchbox
+com.coloros.quicksearchbox
+com.oplus.quicksearchbox
+
+# --- BRAND CLOUD APPS & ACCOUNTS ---
+# HeyTap Cloud Sync & Account (ColorOS 7, 11, 12, 13, 14, 15)
+com.heytap.cloud
+com.heytap.usercenter
+com.oppo.usercenter
+com.oplus.usercenter
+# Legacy ColorOS 5 & 6 Cloud Sync
+com.coloros.cloud
+# HeyTap Push / Ad messaging service
+com.heytap.mcs
+# HeyTap OpenID tracking identifier daemon
+com.heytap.openid
+# Atlas / Location marketing provider
+com.nearme.atlas
+# Legacy Oppo Community
+com.oppo.community
+
+# --- GAME CENTERS & GAME LAUNCHERS ---
+# HeyTap Game Center / Promotions
+com.nearme.gamecenter
+# Oplus Games / Game Space (Ad banners, promotions, redundant overlays)
+com.oplus.games
+com.coloros.gamespace
+com.coloros.gamespaceui
+
+# --- VOICE ASSISTANTS & AI SUGGESTIONS ---
+# Breeno / HeyTap Speech Assistant
+com.heytap.speechassist
+com.coloros.speechassist
+com.coloros.speechassist.engine
+# Pantanal smart suggestions / service cards
+com.oplus.pantanal.ums
+
+# --- CHINESE-MARKET & REGIONAL SERVICES ---
+# FinShell Pay / Wallet (ColorOS 7–15)
+com.finshell.wallet
+com.coloros.wallet
+com.heytap.wallet
+com.oplus.pay
+com.oplus.wallet
+# Legacy ColorOS 5 & 6 Secure Pay
+com.coloros.securepay
+# Redtea Mobile Roaming stub
+com.redteamobile.roaming
+# HeyTap / Oppo Roaming (Legacy ColorOS 5/6 & modern)
+com.heytap.roaming
+com.oppo.roaming
+# Legacy ColorOS 5/6 Smart Drive & Kids Space
+com.coloros.smartdrive
+com.coloros.childrenspace
+
+# --- LOGGING, DIAGNOSTICS & TELEMETRY ---
+# ColorOS / Oplus LogKit (Telemetry and debug logs)
+com.coloros.logkit
+com.oplus.logkit
+# Crash reporting daemons
+com.oplus.crashbox
+# Analytics Tracking Daemon
+com.coloros.atd
+# Postman telemetry reporter
+com.oplus.postmanservice
+# NearMe ROM usage statistics
+com.nearme.statistics.rom
+# User behavior habit analyzer
+com.oplus.deepthinker
+# User experience improvement program
+com.oplus.uxdesign
+# Feedback app
+com.oplus.criticallog
+com.coloros.feedback
+
+# --- ENGINEERING & FACTORY TEST APPS ---
+# Factory test modes and engineering diagnostics
+com.oplus.engineermode
+com.oplus.engineermode.camera
+com.oplus.factorytest
+# Software Auto Update background push checker
+com.oplus.sau
+com.oplus.sauhelper
+
+# --- DUPLICATE MUSIC, VIDEO & BROWSER APPS ---
+# HeyTap Browser (Bloated with trending news and push notifications)
+com.heytap.browser
+com.coloros.browser
+# ColorOS Video Player (Redundant with VLC/Just Player)
+com.coloros.video
+com.oplus.video
+# ColorOS Music / Melody
+com.heytap.music
+com.oppo.music
+com.coloros.music
+com.oplus.melody

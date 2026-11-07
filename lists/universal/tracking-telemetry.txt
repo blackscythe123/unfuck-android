@@ -1,0 +1,18 @@
+# Universal Cross-Device Tracking, Telemetry & Ad Daemons
+# Safe to disable/uninstall across ALL Android manufacturers
+
+# Meta / Facebook Background Daemons (Pre-installed inside firmware)
+com.facebook.services
+com.facebook.appmanager
+com.facebook.system
+com.facebook.stella
+
+# Google AdServices & Analytics Daemons
+com.google.android.adservices.api
+com.google.android.ondevicepersonalization.services
+com.google.mainline.adservices
+com.google.mainline.telemetry
+
+# Recommended System-Wide Killswitch (AdGuard DNS-over-TLS)
+# Android Settings -> Connection & sharing -> Private DNS -> Designated:
+# dns.adguard-dns.com

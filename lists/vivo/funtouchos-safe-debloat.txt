@@ -1,0 +1,77 @@
+# ==============================================================================
+# CleanYourPhone - vivo (Funtouch OS) Safe Debloat List
+# Cross-referenced with UAD-ng and MuntashirAkon debloat lists.
+# Safe to disable/uninstall for user 0 without causing bootloops.
+# ==============================================================================
+
+# --- BRAND APP STORES & THEME STORES ---
+# V-Appstore (vivo proprietary store with sponsored ads and notifications)
+com.vivo.appstore
+# i Theme Store (Paid themes and background telemetry)
+com.bbk.theme
+com.bbk.theme.resources
+com.vivo.theme
+
+# --- LOCK SCREEN MAGAZINES & GLOBAL SEARCH ---
+# Lockscreen Poster (Glance-style dynamic wallpapers with promotional links)
+com.vivo.magazine
+# Glance lock screen feed
+com.glance.internet
+# vivo Global Search (Pulls web and ad results when swiping down)
+com.vivo.globalsearch
+
+# --- BRAND CLOUD APPS & ACCOUNTS ---
+# vivo Cloud
+com.bbk.cloud
+# vivo Account / User Center
+com.bbk.account
+# vivo Push Service (Background ad notification delivery daemon)
+com.vivo.pushservice
+
+# --- GAME CENTERS & GAME SERVICES ---
+# vivo Game Center / Game Space (Ad banners and promotional push)
+com.vivo.game
+com.vivo.gamewatch
+
+# --- VOICE ASSISTANT & JOVI SERVICES ---
+# Jovi Voice / Assistant
+com.vivo.assistant
+com.bbk.appassistant
+# Jovi Home / HiBoard (Minus-one discovery screen with ads)
+com.vivo.hiboard
+# Jovi Smart Scene suggestions
+com.vivo.cota
+
+# --- CHINESE-MARKET & FINANCIAL SERVICES ---
+# vivo Wallet / vivo Pay / UnionPay
+com.vivo.wallet
+com.vivo.unionpay
+com.vivo.space
+com.vivo.website
+# Roaming
+com.redteamobile.roaming
+
+# --- TELEMETRY, LOGGING & DIAGNOSTICS ---
+# vivo Daemon Service & Analytics
+com.vivo.daemonService
+com.vivo.agent
+# vivo Log System
+com.bbk.iqoo.logsystem
+# Custom diagnostic tools
+com.vivo.customtool
+com.vivo.mot
+
+# --- DUPLICATE MUSIC, VIDEO & BROWSER ---
+# vivo Browser (Contains aggressive news feed and sponsored notifications)
+com.vivo.browser
+# Video Editor / Player duplicates
+com.vivo.videoeditor
+com.vivo.vtouch
+# EasyShare (vivo file transfer stub; replace with LocalSend)
+com.vivo.easyshare
+
+# --- LEGACY FUNTOUCH OS (Funtouch 3, 4, 9) ---
+# Legacy promotional stubs & update pushers
+com.vivo.FuntouchOS
+com.bbk.updater
+com.bbk.photovideo
