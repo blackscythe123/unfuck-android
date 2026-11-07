@@ -214,8 +214,10 @@ This framework builds upon the collective research and safety classifications of
 
 ---
 
-## Legal and Compliance
+## Documentation and Compliance
 
-* **License:** [MIT License](LICENSE)
+* **AI Agent Operating Guidelines:** [AGENTS.md](AGENTS.md)
+* **Claude Assistant Reference:** [CLAUDE.md](CLAUDE.md)
 * **Security Policy & Core Blacklist:** [SECURITY.md](SECURITY.md)
 * **Code of Conduct:** [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+* **License:** [MIT License](LICENSE)

@@ -1,7 +1,7 @@
 # Security Policy & Critical Safety Rules
 
 > [!CAUTION]
-> ### ⚠️ DISCLAIMER & WARNING: USE AT YOUR OWN RISK
+> ### DISCLAIMER AND WARNING: USE AT YOUR OWN RISK
 > Modifying Android system packages via ADB involves low-level operating system controls. While our debloat lists and scripts are strictly curated against dual-list safety consensus and operate under **User 0 isolation** (meaning `/system` is never permanently modified and changes are 100% reversible), **you execute these operations entirely at your own discretion and risk**. The author and contributors are not responsible for bricked devices, bootloops, data loss, voided warranties, or malfunctioning emergency services. Always maintain a full mathematical baseline snapshot (Phase 0) before executing any debloat operations.
 
 ---
