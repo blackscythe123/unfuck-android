@@ -1,0 +1,23 @@
+# User device snapshots and backups
+backup/
+backup_apks/
+*-baseline.txt
+packages-*.txt
+enabled-*.txt
+disabled-*.txt
+*.apk
+
+# Generated interactive HTML reports and device JSON data
+storage-analyzer.html
+storage_data.json
+comparison_data.json
+*.html
+!docs/**/*.html
+
+# Logs and cache
+*.log
+__pycache__/
+*.py[cod]
+.env
+.DS_Store
+Thumbs.db

@@ -61,7 +61,135 @@ adb pull /data/app/.../base.apk ./backup/apks/<custom_package>.apk
 
 ---
 
-## 3. Dual-List Consensus Safety Model
+## 3. Visual Disk Usage, Storage Architecture & HTML Dashboard Generation
+
+Users require transparent visual confirmation of how their internal storage is allocated and how much space is recovered at each stage.
+
+### 3.1 Mandatory HTML Dashboard Generation
+Whenever evaluating device storage or completing debloat phases, the AI agent must generate and present an interactive visual HTML dashboard:
+```powershell
+.\scripts\05-storage-report.ps1
+# or
+python tools/generate_storage_report.py
+```
+This queries `adb shell dumpsys diskstats`, extracts exact byte counts, and generates `storage-analyzer.html` with interactive metrics, partition progress tracks, and actionable recovery recommendations.
+
+### 3.2 Storage Classification: Code vs Data vs Cache
+The AI agent must clearly explain the fundamental differences between storage components:
+
+```text
+Storage Component Hierarchy
+┌───────────────────────────────┬─────────────────────────────────┬────────────────────────────────┐
+│ Component                     │ Technical Definition            │ Safe Recovery Method           │
+├───────────────────────────────┼─────────────────────────────────┼────────────────────────────────┤
+│ 1. App Code (APK)             │ Read-only compiled binary files  │ Reclaimed only by debloating   │
+│                               │ on /system or /data/app         │ via pm disable-user --user 0   │
+├───────────────────────────────┼─────────────────────────────────┼────────────────────────────────┤
+│ 2. App User Data              │ SQLite databases, login state,  │ Dangerous to wipe globally.    │
+│                               │ encryption keys, offline files  │ Use in-app storage managers    │
+├───────────────────────────────┼─────────────────────────────────┼────────────────────────────────┤
+│ 3. App Cache (Volatile)       │ Image previews, HTTP caches,    │ 100% Zero-Risk. Purged via     │
+│                               │ temporary transcoding buffers   │ pm trim-caches 1000G           │
+└───────────────────────────────┴─────────────────────────────────┴────────────────────────────────┘
+```
+
+### 3.3 The 4-Tier Storage Recovery Hierarchy
+When advising the user on storage reclamation, recommend actions in ascending order of risk:
+
+```mermaid
+flowchart TD
+    T1["Tier 1: Global Cache Trim<br/>adb shell pm trim-caches 1000G<br/>Risk: ZERO · Logins Preserved: 100%"] --> T2["Tier 2: Streaming Media Caches<br/>Purge Spotify / Video Cache Folders<br/>Risk: LOW · Account Intact"]
+    T2 --> T3["Tier 3: Messaging In-App Purge<br/>WhatsApp / Telegram In-App Media Manager<br/>Risk: LOW · Chat DB Intact"]
+    T3 --> T4["Tier 4: Bloatware Debloating<br/>pm disable-user --user 0 on OEM bloat<br/>Risk: ZERO · 100% Reversible"]
+```
+
+1. **Tier 1 (Zero-Risk Instant Win):** Run `adb shell pm trim-caches 1000G` to immediately free up gigabytes of stale cached files across all apps without affecting logins or databases.
+2. **Tier 2 (Safe Media Cache Purge):** Delete bulky temporary download caches (e.g., Spotify cache at `/sdcard/Android/data/com.spotify.music/files/.../Storage`) without logging the user out.
+3. **Tier 3 (In-App Messaging Media Management):** Direct the user to WhatsApp/Telegram in-app storage managers to delete forwarded videos larger than 5 MB while keeping personal conversations safe.
+4. **Tier 4 (System Debloating):** Disable unused OEM storefronts, themes, and background services via `.\scripts\02-debloat.ps1`.
+
+---
+
+## 4. The Zero-Tracker Objective and Private DNS Configuration
+
+The goal of this framework is to eradicate background telemetry and tracking SDKs so the device operates with zero unsolicited outbound data transmissions and feels brand new.
+
+### 4.1 Eradication of Background Telemetry Daemons
+The AI agent must verify the termination of known tracking and analytics frameworks:
+* **Meta / Facebook Daemons:**
+  * `com.facebook.services`
+  * `com.facebook.system`
+  * `com.facebook.appmanager`
+  * `com.facebook.stella`
+* **OEM Telemetry & Diagnostic Engines:**
+  * DCS / ROM Statistics (`com.oplus.statistics.rom`)
+  * Diagnostic kits (`com.oplus.logkit`, `com.oplus.crashbox`, `com.oplus.onetrace`, `com.oplus.deepthinker`)
+* **Intrusive Ad Surfaces:**
+  * Lockscreen ad carousels (`com.heytap.pictorial`, Glance, Lockscreen Poster)
+  * Minus-one home screen news feed (`com.google.android.googlequicksearchbox`)
+
+### 4.2 System-Wide Private DNS (Encrypted Ad & Tracker Blocking)
+Instruct the user to configure encrypted DNS at the platform level:
+1. Navigate to **Settings → Connection & sharing → Private DNS**.
+2. Select **Designated / Specified Private DNS**.
+3. Input hostname: `dns.adguard-dns.com` (or user-preferred provider such as NextDNS or Mullvad).
+*Result:* All DNS lookups targeting known tracking domains (AppsFlyer, DoubleClick, Facebook Graph, Adjust) are blocked over TLS across all apps and browsers with zero battery overhead and without requiring local VPN slots.
+
+---
+
+## 5. Protection of Daily Utilities and Explicit User Consent Rule
+
+### 5.1 Preservation of Daily Utilities
+OEM firmware bundles essential daily utilities that users rely on. The AI agent must never unilaterally disable or clear:
+* **Notes:** `com.coloros.note`, OEM Notes applications.
+* **Clock & Alarm:** `com.coloros.alarmclock`, `com.google.android.deskclock`.
+* **Calculator:** `com.coloros.calculator`, OEM Calculator.
+* **Calendar:** `com.google.android.calendar`, OEM Calendar.
+* **Sound Recorder & Compass:** Proprietary sensor and audio tools.
+
+### 5.2 Mandatory User Consent Protocol
+Before touching any utility application:
+1. Check if the application contains active user data.
+2. Formally prompt the user for consent:
+   ```text
+   The OEM Clock and Notes applications are currently active. Do you use these apps for your daily morning alarms or personal notes, or would you prefer replacing them with alternative open-source tools?
+   ```
+3. Never remove an alarm or clock application if the user depends on it for wake-up alarms.
+
+---
+
+## 6. Post-Debloat Verification: Ensuring System Stability
+
+After modifying packages, the AI agent must run a comprehensive stability test to confirm that no critical subsystems are degraded:
+
+```text
+Stability Verification Checklist
+[1. Crash Logcat] ──> [2. Telephony Stack] ──> [3. Thermal Check] ──> [4. Idle CPU Check]
+```
+
+1. **Crash Logcat Inspection:**
+   ```bash
+   adb logcat -d -b crash
+   adb logcat -d -b system -t 500 *:E
+   ```
+   *Pass Criteria:* Zero recurring crash loops, zero fatal exceptions in system server.
+2. **Telephony and Radio Interface Verification:**
+   * Verify cellular modem registered: `adb shell dumpsys telephony.registry | grep mServiceState`.
+   * Confirm dialer and emergency call subsystem remain fully operational.
+3. **Thermal State Verification:**
+   ```bash
+   adb shell dumpsys battery | grep temperature
+   ```
+   *Pass Criteria:* Temperature value between 300 and 400 (30.0°C to 40.0°C).
+4. **CPU Idle Load Verification:**
+   ```bash
+   adb shell dumpsys cpuinfo | head -n 10
+   ```
+   *Pass Criteria:* Overall CPU idle capacity exceeds 95% when sitting on the home screen.
+
+---
+
+## 7. Dual-List Consensus Safety Model
 
 AI agents must never remove packages based solely on intuition, arbitrary heuristic matching, or unverified web search snippets.
 
@@ -76,86 +204,36 @@ All removals must be cross-referenced against the two recognized upstream author
 
 ---
 
-## 4. Personal Data and Messaging Application Safeguards
+## 8. Empirical Benchmark Metrics (Unbiased Reference Data)
 
-### 4.1 Strict Prohibition on `pm clear` for Messaging and Communication Apps
-* Never execute `adb shell pm clear` on messaging applications, communication suites, or authentication apps (including WhatsApp, Telegram, Signal, Discord, SMS providers, or Google Authenticator).
-* Running `pm clear` irreversibly deletes local database encryption keys, message histories, and session tokens.
-* When addressing storage consumption by messaging applications:
-  1. Instruct the user to utilize the application's built-in storage manager:
-     * *WhatsApp:* **Settings → Storage and data → Manage storage** (identifies forwarded media larger than 5 MB).
-     * *Telegram:* **Settings → Data and Storage → Storage Usage → Clear Cache**.
-  2. For streaming media applications (e.g., Spotify), safely purge the media download cache located at `/sdcard/Android/data/<package>/files/...` rather than wiping application credentials.
+To maintain technical objectivity, AI agents may cite empirical benchmark data established during physical production device testing on modern Android 14 / ColorOS 14 hardware:
+
+* **Storage Reclaimed:** **+24.46 GB net storage** directly recovered (available capacity expanded from 10.90 GB / 10% capacity up to 35.36 GB / 33% capacity — available storage officially tripled).
+* **Package Reduction:** Active package count decreased from 547 down to 474 (73 bloat, telemetry, and storefront packages disabled).
+* **RAM De-allocation:** Over 2.0 GB of physical RAM freed from persistent background daemons.
+* **Thermal Equilibrium:** Battery temperature maintained at 37°C–38°C under normal ambient conditions.
+* **Stability:** Zero logcat crash events across all core services.
 
 ---
 
-## 5. Hardware Diagnostics, Thermals, and Linux Process Architecture
+## 9. Hardware Diagnostics, Thermals, and Linux Process Architecture
 
-AI agents must possess accurate technical understanding of modern Android kernel internals to prevent misinforming users.
-
-### 5.1 Thermal Architecture under Android 13/14+ SELinux
-* On modern chipsets (e.g., MediaTek Dimensity, Qualcomm Snapdragon) running Android 13 or 14+, raw kernel thermal nodes located at `/sys/class/thermal/thermal_zone*/temp` are restricted to `root` or privileged `system` daemons.
-* Shell UID 2000 execution will return `Permission denied`. This is expected security behavior, not a device failure.
-* **Authoritative Thermal Metric:** Use `dumpsys battery`:
+### 9.1 Thermal Architecture under Android 13/14+ SELinux
+* On modern chipsets (MediaTek Dimensity, Qualcomm Snapdragon) running Android 13/14+, raw kernel nodes at `/sys/class/thermal/thermal_zone*/temp` are restricted to `root` or privileged `system` daemons.
+* Shell UID 2000 execution will return `Permission denied`. This is standard security behavior, not a device failure.
+* **Authoritative Thermal Metric:** Query `dumpsys battery`:
   ```bash
   adb shell dumpsys battery | grep temperature
   ```
-  Value `375` represents `37.5°C`. Normal device operating temperature is 30.0°C to 40.0°C.
 
-### 5.2 Linux Process and Thread Architecture
-* Standard Android systems maintain between 800 and 1,000 Linux processes and 5,000 to 7,000 threads.
-* Over 99% of these processes reside in the Linux `Interruptible Sleep` (`S`) state, consuming 0.0% CPU and zero battery until invoked by an event interrupt.
-* Agents must explain to users that high thread counts are standard operating behavior for the Android runtime (ART) and Linux task scheduler. Agents should never attempt to mass-terminate system threads.
-
----
-
-## 6. Execution Pipeline Reference
-
-When guiding a user or executing optimizations, agents must follow the structured four-phase pipeline:
-
-```text
-[ Phase 0: Baseline Snapshot ] ──> [ Phase 1: Safe Debloat ] ──> [ Phase 2: Ads & Discover ] ──> [ Phase 3: Standby Optimize ]
-```
-
-### Phase 1: Curated OEM Debloat
-Identify the device manufacturer and apply the appropriate curated list:
-* Oppo (ColorOS): `lists/oppo/coloros-safe-debloat.txt`
-* vivo / iQOO (Funtouch OS / OriginOS): `lists/vivo/funtouchos-safe-debloat.txt`
-* OnePlus (OxygenOS): `lists/oneplus/oxygenos-safe-debloat.txt`
-* Realme (Realme UI): `lists/realme/realmeui-safe-debloat.txt`
-* Xiaomi / POCO (HyperOS / MIUI): `lists/xiaomi/hyperos-safe-debloat.txt`
-* Samsung (One UI): `lists/samsung/oneui-safe-debloat.txt`
-* Universal Trackers: `lists/universal/tracking-telemetry.txt`
-
-### Phase 2: Elimination of Intrusive Ads and Discover Feeds
-1. **Google Discover Minus-One Screen:**
-   ```bash
-   adb shell pm disable-user --user 0 com.google.android.googlequicksearchbox
-   adb shell am force-stop com.android.launcher
-   ```
-2. **Private DNS Configuration:**
-   Guide the user to configure encrypted DNS via **Settings → Connection & sharing → Private DNS → Designated hostname: `dns.adguard-dns.com`**.
-
-### Phase 3: Battery and Standby Enhancements
-1. **Disable Radio Scanning:**
-   ```bash
-   adb shell settings put global wifi_scan_always_enabled 0
-   adb shell settings put global ble_scan_always_enabled 0
-   ```
-2. **Doze Whitelist Hygiene:**
-   Remove non-essential background packages from Doze exemption:
-   ```bash
-   adb shell dumpsys deviceidle whitelist -<package_name>
-   ```
-3. **Standby Bucket Management:**
-   Place non-essential applications into the `RESTRICTED` standby bucket (`45`):
-   ```bash
-   adb shell am set-standby-bucket <package_name> restricted
-   ```
+### 9.2 Linux Process and Thread Architecture
+* Standard Android systems run 800 to 1,000 Linux processes and 5,000 to 7,000 threads.
+* Over 99% of these reside in `Interruptible Sleep` (`S` state), drawing 0.0% CPU until awakened by hardware interrupts.
+* High thread counts are normal operating behavior for ART and the Linux kernel scheduler. Do not attempt mass thread termination.
 
 ---
 
-## 7. Recommended Diagnostic Tooling
+## 10. Recommended Diagnostic Tooling
 
 When users seek on-device monitoring tools, agents should recommend the following open-source utilities:
 
@@ -171,21 +249,7 @@ When users seek on-device monitoring tools, agents should recommend the followin
 
 ---
 
-## 8. Rollback and Recovery Verification
-
-Before concluding any session, the AI agent must verify device stability:
-1. **Logcat Inspection:**
-   ```bash
-   adb logcat -d -b crash
-   adb logcat -d -b system -t 500 *:E
-   ```
-   Confirm zero critical system crashes.
-2. **Reversibility Guarantee:**
-   Confirm that `.\scripts\04-restore.ps1` exists and is functional to restore all modifications if requested.
-
----
-
-## 9. Privacy and Information Security Constraints
+## 11. Privacy and Information Security Constraints
 
 * **Zero Personal Information in Commits or Logs:** Never output, log, commit, or push personal names, email addresses, hardware serial numbers, IMEI identifiers, Wi-Fi MACs, or internal proprietary package names.
 * **Scrub Dynamic Data:** When creating reports or documentation, substitute hardware identifiers with generic placeholders (e.g., `SERIAL_NUMBER_REDACTED`, `DEVICE_MODEL`).

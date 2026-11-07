@@ -96,8 +96,8 @@ The framework hardcodes a strict regex rejection shield. Any command targeting p
 ## The Four-Phase Execution Pipeline
 
 ```text
-[ 1. CONNECT & SNAPSHOT ] ──> [ 2. SAFE DEBLOAT ] ──> [ 3. ADS & DISCOVER ] ──> [ 4. STANDBY OPTIMIZE ]
-     Phase 0 Baseline               Consensus Engine       Private DNS & Feed          Doze & Buckets
+[ 1. CONNECT & SNAPSHOT ] ──> [ 2. VISUAL STORAGE ] ──> [ 3. SAFE DEBLOAT ] ──> [ 4. ZERO TRACKERS ] ──> [ 5. STANDBY OPTIMIZE ]
+     Phase 0 Baseline               Interactive HTML           Consensus Engine         Private DNS & Feed          Doze & Buckets
 ```
 
 ### Phase 0: Baseline Snapshot and APK Preservation
@@ -107,6 +107,24 @@ Before modifying any configuration, generate an exact baseline inventory and arc
 ```
 * Generates `packages-baseline.txt`, `enabled-baseline.txt`, and `disabled-baseline.txt`.
 * Automatically detects third-party developer APKs and pulls them into `backup/apks/`.
+
+### Storage Architecture & Visual Recovery Advisor
+To visualize partition allocation and understand exactly how internal memory is distributed across App Code, User Data, and Caches:
+```powershell
+.\scripts\05-storage-report.ps1
+# or
+python tools/generate_storage_report.py
+```
+* Generates `storage-analyzer.html` (interactive, dark-themed, zero-dependency dashboard).
+* Categorizes storage into three distinct layers:
+  * **App Code (APK):** Read-only compiled application binaries. Only recovered by disabling/uninstalling packages (`pm disable-user --user 0`).
+  * **App User Data:** Private databases, login tokens, encryption keys, and downloaded media. Never wipe globally; clean via in-app storage managers.
+  * **App Cache:** Volatile temporary files, thumbnails, and HTTP response caches. **100% Zero Risk to purge** via `adb shell pm trim-caches 1000G` without affecting user accounts or chats.
+* Formulates a 4-Tier Recovery Plan:
+  * **Tier 1 (Instant Zero-Risk):** Global stale cache trim (`pm trim-caches 1000G`).
+  * **Tier 2 (Safe Media Cache):** Purge streaming app media directories (Spotify, video apps).
+  * **Tier 3 (In-App Messaging):** Manage WhatsApp / Telegram forwarded media via in-app storage tools.
+  * **Tier 4 (Storefront & Bloat Debloat):** Disable OEM ad storefronts and background services.
 
 ### Phase 1: Safe Consensus Debloating
 Execute brand-specific debloating using verified lists:
@@ -143,6 +161,14 @@ Execute brand-specific debloating using verified lists:
 1. **Radio Background Scanning Mitigation:** Disables hidden background Wi-Fi and Bluetooth scanning (which continuously pulse hardware radios even when switched off in the quick settings).
 2. **Doze Whitelist Scrubbing:** Removes pre-exempted commercial and OEM packages from the Android Doze whitelist (`dumpsys deviceidle whitelist`), ensuring they enter low-power sleep when the screen is locked.
 3. **Standby Bucket Restrictions:** Places non-essential background applications into the `RESTRICTED` standby bucket (`45`), cutting background execution while maintaining full responsiveness upon user launch.
+
+### Phase 4: Stability Verification ("Ensure Nothing Breaks")
+After completing debloat passes, verify system integrity:
+1. **Crash Audit:** `adb logcat -d -b crash` (must show 0 crashes).
+2. **Telephony & Radio:** Confirm cellular registration and emergency call readiness (`dumpsys telephony.registry`).
+3. **Core Subsystems:** Ensure stock Camera ISP and Google Play Store remain intact.
+4. **Thermal Equilibrium:** Check battery temperature (`adb shell dumpsys battery | grep temperature`) remains stable between 30°C and 40°C.
+5. **Daily Utilities Preservation:** Verify OEM Notes, Clock/Alarm, Calculator, and Calendar are kept unless explicit user consent for replacement is given.
 
 ---
 
