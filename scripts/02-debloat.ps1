@@ -47,15 +47,29 @@ Write-Host "Active Target Profile: $Brand" -ForegroundColor Cyan
 
 # 3. Locate debloat lists
 $listDir = "$PSScriptRoot\..\lists"
-$safeList = "$listDir\$Brand\$Brand-safe-debloat.txt"
+$brandMap = @{
+    "oppo"    = @{ safe = "coloros-safe-debloat.txt"; opt = "coloros-optional-debloat.txt" }
+    "oneplus" = @{ safe = "oxygenos-safe-debloat.txt"; opt = "oxygenos-optional-debloat.txt" }
+    "realme"  = @{ safe = "realmeui-safe-debloat.txt"; opt = "realmeui-optional-debloat.txt" }
+    "vivo"    = @{ safe = "funtouchos-safe-debloat.txt"; opt = "vivo-optional-debloat.txt" }
+    "iqoo"    = @{ safe = "iqoo-safe-debloat.txt"; opt = "iqoo-optional-debloat.txt" }
+    "xiaomi"  = @{ safe = "hyperos-safe-debloat.txt"; opt = $null }
+    "samsung" = @{ safe = "oneui-safe-debloat.txt"; opt = $null }
+}
+
+$safeFileName = if ($brandMap.ContainsKey($Brand)) { $brandMap[$Brand].safe } else { "$Brand-safe-debloat.txt" }
+$safeList = "$listDir\$Brand\$safeFileName"
 $commonList = "$listDir\common\third-party-bloat.txt"
 $telemetryList = "$listDir\common\google-telemetry-safe.txt"
 $facebookList = "$listDir\common\facebook-bloat.txt"
 
 $targetLists = @($safeList, $commonList, $telemetryList, $facebookList)
 if ($IncludeOptional) {
-    $optList = "$listDir\$Brand\$Brand-optional-debloat.txt"
-    if (Test-Path $optList) { $targetLists += $optList }
+    $optFileName = if ($brandMap.ContainsKey($Brand)) { $brandMap[$Brand].opt } else { "$Brand-optional-debloat.txt" }
+    if ($optFileName) {
+        $optList = "$listDir\$Brand\$optFileName"
+        if (Test-Path $optList) { $targetLists += $optList }
+    }
 }
 
 # 4. Read installed packages
@@ -105,4 +119,4 @@ foreach ($lFile in $targetLists) {
     }
 }
 
-Write-Host "`n✅ Debloat complete! $processed packages removed/disabled ($skipped skipped / not on device)." -ForegroundColor Green
+Write-Host "`n[+] Debloat complete! $processed packages removed/disabled ($skipped skipped / not on device)." -ForegroundColor Green

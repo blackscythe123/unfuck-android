@@ -198,28 +198,3 @@ Write-Host " Already absent : $skipped"
 Write-Host " Restore script : .\restore_last_session.ps1" -ForegroundColor Yellow
 Write-Host " Backup snapshot: $backupDir\" -ForegroundColor DarkGray
 Write-Host "==========================================================" -ForegroundColor Cyan
-
-# Stage 2: Minimalist Home Screen Selection
-if (-not $DryRun) {
-    Write-Host ""
-    Write-Host "==========================================================" -ForegroundColor Cyan
-    Write-Host " Stage 2: Minimalist Home Screen Upgrade" -ForegroundColor Green
-    Write-Host "==========================================================" -ForegroundColor Cyan
-    Write-Host "CleanYourPhone includes a minimal Apple-like Liquid Glass Launcher"
-    Write-Host "(ultra-lightweight, frosted dock, zero ads, <15MB RAM)."
-    Write-Host ""
-
-    if (-not $InstallLauncher -and -not $KeepLauncher) {
-        $choice = Read-Host "Would you like to install the Liquid Glass Launcher? [y/N]"
-        if ($choice -match "^[Yy]$") {
-            $InstallLauncher = $true
-        }
-    }
-
-    if ($InstallLauncher) {
-        Write-Host "[*] Launching installer..." -ForegroundColor Cyan
-        & ".\launcher\build-and-install.ps1"
-    } else {
-        Write-Host "[*] Keeping your existing home screen." -ForegroundColor White
-    }
-}

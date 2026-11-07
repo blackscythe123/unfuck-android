@@ -233,23 +233,7 @@ To maintain technical objectivity, AI agents may cite empirical benchmark data e
 
 ---
 
-## 10. Recommended Diagnostic Tooling
-
-When users seek on-device monitoring tools, agents should recommend the following open-source utilities:
-
-1. **TaskManager (by Rohit Kushvaha):**
-   * Purpose: Real-time per-core CPU load, RAM allocation, and process management via Shizuku non-root IPC.
-   * Source: `https://github.com/RohitKushvaha01/TaskManager`
-2. **CPU Info (by Kamil Gurgul):**
-   * Purpose: Real-time battery thermals, SoC architecture, and cluster frequencies.
-   * Source: `https://github.com/kamgurgul/cpu-info`
-3. **Shizuku (by Rikka):**
-   * Purpose: Elevated ADB privileges without root access.
-   * Source: `https://shizuku.rikka.app/`
-
----
-
-## 11. Privacy and Information Security Constraints
+## 10. Privacy and Information Security Constraints
 
 * **Zero Personal Information in Commits or Logs:** Never output, log, commit, or push personal names, email addresses, hardware serial numbers, IMEI identifiers, Wi-Fi MACs, or internal proprietary package names.
 * **Scrub Dynamic Data:** When creating reports or documentation, substitute hardware identifiers with generic placeholders (e.g., `SERIAL_NUMBER_REDACTED`, `DEVICE_MODEL`).

@@ -28,17 +28,17 @@ $whitelistHogs = @(
 )
 foreach ($pkg in $whitelistHogs) {
     $res = adb shell "dumpsys deviceidle whitelist -$pkg"
-    Write-Host "   $pkg: $res" -ForegroundColor Gray
+    Write-Host "   ${pkg}: $res" -ForegroundColor Gray
 }
 
 # 2. Throttle Standby Buckets
 Write-Host "`n2. Restricting Standby Buckets for Background Apps..." -ForegroundColor Yellow
 $restrictedCandidates = @(
     "com.facebook.katana",
-    "com.usertesting.recorder.krsna",
-    "com.miui.calculator",
-    "com.eurekaffeine.pokedex.renaissance",
-    "in.mobility.cumta"
+    "com.instagram.android",
+    "com.snapchat.android",
+    "com.twitter.android",
+    "com.zhiliaoapp.musically"
 )
 foreach ($pkg in $restrictedCandidates) {
     adb shell "am set-standby-bucket $pkg restricted" 2>$null | Out-Null
@@ -58,4 +58,4 @@ Write-Host "   Select: Designated / Specified Private DNS" -ForegroundColor Whit
 Write-Host "   Enter:  dns.adguard-dns.com" -ForegroundColor Green
 Write-Host "   This blocks in-app ads, Meta SDK pings, and tracking domains system-wide without root!" -ForegroundColor Gray
 
-Write-Host "`n✅ Battery and standby optimizations applied!" -ForegroundColor Green
+Write-Host "`n[+] Battery and standby optimizations applied!" -ForegroundColor Green

@@ -74,7 +74,7 @@ if ($missing.Count -gt 0) {
                 adb install -r "$BaselineDir\apks\$pkg.apk" | Out-Null
             }
         }
-        Write-Host "  Reinstalling $pkg: $res" -ForegroundColor Gray
+        Write-Host "  Reinstalling ${pkg}: $res" -ForegroundColor Gray
     }
 } else {
     Write-Host "Package inventory: All baseline packages are installed." -ForegroundColor Green
@@ -90,7 +90,7 @@ if ($toEnable.Count -gt 0) {
     Write-Host "`nRe-enabling $($toEnable.Count) packages..." -ForegroundColor Yellow
     foreach ($pkg in $toEnable) {
         $res = adb shell pm enable $pkg
-        Write-Host "  Enabling $pkg: $res" -ForegroundColor Green
+        Write-Host "  Enabling ${pkg}: $res" -ForegroundColor Green
     }
 } else {
     Write-Host "Package states: Disabled states match baseline." -ForegroundColor Green

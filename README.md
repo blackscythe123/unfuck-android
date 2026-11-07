@@ -36,6 +36,10 @@ In empirical production testing on Android 14 devices:
 * **Net Recovered Storage:** **+24.46 GB** reclaimed without factory resetting or altering partition structures.
 * **System Metrics:** Zero logcat errors, over 2.0 GB of physical RAM de-allocated from background workers, and device idle CPU capacity maintained above 95%.
 
+<p align="center">
+  <img src="docs/benchmark-comparison-graph.png" alt="Empirical Benchmark and Recovery Audit - Before vs After" width="900">
+</p>
+
 ---
 
 ## Supported Ecosystems and Architectures
@@ -90,6 +94,42 @@ The framework hardcodes a strict regex rejection shield. Any command targeting p
 ```regex
 ^(android|android\.ext\.(services|shared)|com\.android\.sdksandbox|com\.android\.location\.fused|com\.android\.systemui|com\.android\.shell|com\.android\.phone|com\.android\.dialer|com\.android\.server\.telecom|com\.android\.settings|com\.android\.keyguard|com\.(google\.)?android\.(permissioncontroller|packageinstaller|ext\.services|ext\.shared|modulemetadata)|com\.google\.android\.overlay\.modules.*|com\.android\.providers\.(telephony|media|downloads|settings)|com\.qualcomm\.qti\.telephonyservice|com\.mediatek\.telephony)$
 ```
+
+---
+
+## Prerequisites and Quick Setup
+
+Before running any scripts, ensure your device and computer are configured:
+
+### 1. Enable Developer Options and USB Debugging
+1. Open **Settings → About device → Version**.
+2. Tap **Build Number** 7 times until you see the prompt: *"You are now in Developer mode!"*
+3. Navigate to **Settings → Additional settings (or System) → Developer options**.
+4. Enable **USB Debugging**.
+5. *(ColorOS / OxygenOS / Realme UI users):* Scroll down and toggle off **Permission monitoring** (or enable **Disable adb authorization timeout**) so automated package commands run without interruption.
+6. Connect your phone to your PC via USB cable and select **Always allow from this computer** when prompted on the screen.
+
+### 2. Install Android Debug Bridge (ADB)
+* **Windows:**
+  ```powershell
+  winget install Google.PlatformTools
+  ```
+* **macOS:**
+  ```bash
+  brew install android-platform-tools
+  ```
+* **Linux:**
+  ```bash
+  sudo apt install adb          # Debian / Ubuntu
+  sudo pacman -S android-tools  # Arch Linux
+  ```
+
+> [!TIP]
+> **Windows Execution Policy:** If running scripts produces an execution policy warning, run with `-ExecutionPolicy Bypass`:
+> ```powershell
+> powershell -ExecutionPolicy Bypass -File .\scripts\01-backup-baseline.ps1
+> ```
+> **macOS / Linux Support:** All Python utilities run cross-platform (`python3 tools/generate_storage_report.py`, `python3 tools/phone.py status`), and native shell scripts are available under `tools/disable.sh`.
 
 ---
 
@@ -194,26 +234,6 @@ After completing debloat passes, verify system integrity:
 
 ---
 
-## Post-Debloat Tool Recommendations
-
-To monitor processes and hardware health post-cleanup:
-
-### 1. TaskManager (by Rohit Kushvaha) + Shizuku
-* **Overview:** A lightweight open-source system monitor inspired by Windows Task Manager and GNOME System Monitor (**3.6 MB**).
-* **Repository:** [RohitKushvaha01/TaskManager](https://github.com/RohitKushvaha01/TaskManager)
-* **Functionality:**
-  * Real-time per-core CPU utilization and clock frequencies.
-  * RAM usage and ZRAM swap compression tracking.
-  * **Process Control:** Navigate to the **Processes** tab to inspect per-app PSS memory and terminate misbehaving background applications on demand.
-* **Privilege Layer:** Integrates with **[Shizuku](https://shizuku.rikka.app/)** to obtain non-root ADB shell execution authority (`UID 2000`).
-
-### 2. CPU Info (by Kamil Gurgul)
-* **Overview:** An open-source hardware, SoC, and thermal diagnostic utility (**2.6 MB**).
-* **Repository:** [kamgurgul/cpu-info](https://github.com/kamgurgul/cpu-info)
-* **Functionality:** Inspect real-time battery thermal metrics, ARM Cortex core cluster topology, and Mali/Adreno GPU specifications.
-
----
-
 ## Mathematical State Restoration
 
 To reverse all package removals and return the device to its exact baseline state:
@@ -234,9 +254,6 @@ This framework builds upon the collective research and safety classifications of
 * **[Universal Android Debloater Next Generation (UAD-ng)](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation):** Cross-manufacturer package safety ratings and community issue tracking.
 * **[MuntashirAkon Android Debloat List](https://github.com/MuntashirAkon/android-debloat-list):** Comprehensive package intent documentation and removal classification matrices.
 * **[Ankodee/cleanyourphone](https://github.com/Ankodee/cleanyourphone):** OEM brand taxonomy, script paradigms, and BBK/OPLUS architecture references.
-* **[RikkaApps/Shizuku](https://shizuku.rikka.app/):** The inter-process communication bridge enabling privileged system API execution without root.
-* **[RohitKushvaha01/TaskManager](https://github.com/RohitKushvaha01/TaskManager):** Modern open-source Android process inspection and task termination.
-* **[kamgurgul/cpu-info](https://github.com/kamgurgul/cpu-info):** Open-source hardware abstraction layer diagnostic tool.
 
 ---
 

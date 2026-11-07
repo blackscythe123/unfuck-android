@@ -229,6 +229,6 @@ for i, b in enumerate(BRANDS):
     draw.text((stx, sty), stat_text, font=font_status, fill=(160, 175, 195, 220))
 
 # Save output
-output_path = "C:/Users/zeltr/.gemini/antigravity/scratch/cleanyourphone/docs/brands-lineup.jpg"
+output_path = os.path.join(os.path.dirname(__file__), "..", "docs", "brands-lineup.jpg")
 img.convert("RGB").save(output_path, "JPEG", quality=96)
 print(f"Generated clean brands lineup banner: {output_path}")

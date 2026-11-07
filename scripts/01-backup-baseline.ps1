@@ -50,5 +50,5 @@ foreach ($line in $thirdParty) {
     }
 }
 
-Write-Host "`n✅ Snapshot complete! $backedUpCount custom APKs backed up safely." -ForegroundColor Green
+Write-Host "`n[+] Snapshot complete! $backedUpCount custom APKs backed up safely." -ForegroundColor Green
 Write-Host "   Baseline files stored in: $OutputDir" -ForegroundColor Cyan
