@@ -247,6 +247,17 @@ To reverse all package removals and return the device to its exact baseline stat
 
 ---
 
+## About Unfuck-Android
+
+`unfuck-android` is an open-source systems engineering framework designed to resolve chronic bloatware, intrusive background telemetry, and synthetic storage exhaustion across commercial Android devices without requiring root privileges.
+
+* **Non-Destructive User 0 Isolation:** Operates exclusively in user space (`--user 0`), leaving `/system` partitions untouched and preserving full dm-verity cryptographic integrity for official OTA updates.
+* **Dual-List Consensus Safety:** Every package modification is validated against both [Universal Android Debloater Next Generation (UAD-ng)](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation) and the [MuntashirAkon Android Debloat List](https://github.com/MuntashirAkon/android-debloat-list).
+* **Guaranteed Reversibility:** Full baseline inventory snapshots ensure any package can be re-installed or re-enabled with one command.
+* **Comprehensive Details:** See [ABOUT.md](ABOUT.md) for full architectural background and engineering methodology.
+
+---
+
 ## References and Upstream Acknowledgments
 
 This framework builds upon the collective research and safety classifications of the open-source Android debloating community:
@@ -259,6 +270,7 @@ This framework builds upon the collective research and safety classifications of
 
 ## Documentation and Compliance
 
+* **About the Project & Architecture:** [ABOUT.md](ABOUT.md)
 * **AI Agent Operating Guidelines:** [AGENTS.md](AGENTS.md)
 * **Claude Assistant Reference:** [CLAUDE.md](CLAUDE.md)
 * **Security Policy & Core Blacklist:** [SECURITY.md](SECURITY.md)
